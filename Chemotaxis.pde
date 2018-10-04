@@ -1,50 +1,59 @@
-Float[]dandelion;
+Fly[] dan;
 void setup(){
   size(700,500);
   noLoop();
+  //this forms a circular shape with seeds
+  dan = new Fly[10];
+  for(int i = 0; i < dan.length; i++){
+    dan[i] = new Fly(200,200); 
+  }
 }
 
 void draw(){
-  background(#EDDD81);
+  background(#98CFF7);
   stem();
-  seed();
+  //this forms a circular shape with seeds
+  for(int i = 0; i < dan.length; i++){
+    dan[i].show();
+  }
 }
 
 //this class mimics the floating motion of a dandelion seed when blown
-class Float{
+class Fly{
   int myX,myY;
-  Float(){
-    myX = myY = 250;
+  Fly(int x, int y){
+    myX = x;
+    myY = y;
   }
   void blow(){
     
   }
   void show(){
-    
+    seed(myX,myY);
+  }
+  void seed(int a, int b){
+  fill(255);
+  noStroke();
+  ellipse(a,b,5,20);
+  
+  stroke(255);
+  strokeWeight(1);
+  line(a,b,a,b-50);
+  
+  noFill();
+  arc(a,b-70,40,40,0,PI);
+  arc(a,b-65,50,30,0,PI);
+  arc(a,b-60,60,20,0,PI);
   }
 } 
 
 //this function draws the stem of the dandelion
 void stem(){
-  fill(0,0,0,200);
+  fill(0,0,0,255);
   noStroke();
-  ellipse(100,200,50,50);
+  ellipse(137,215,30,30);
   
-  stroke(0,0,0,180);
-  strokeWeight(10);
-  line(0, 500, 90, 230);
-}
-
-void seed(){
- fill(255);
- noStroke();
- ellipse(200,200,5,20); 
- 
- stroke(255);
- strokeWeight(1);
- line(200,195,200,140);
- 
- 
- line(180,140,220,140);
- arc(200,140
+  stroke(0,0,0,200);
+  strokeWeight(15);
+  line(0,500, 130, 230);
 }
